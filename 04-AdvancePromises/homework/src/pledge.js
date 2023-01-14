@@ -30,8 +30,6 @@ $Promise.prototype._internalReject = function(value) {
 
 
 
-
-
 module.exports = $Promise;
 /*-------------------------------------------------------
 El spec fue diseñado para funcionar con Test'Em, por lo tanto no necesitamos
