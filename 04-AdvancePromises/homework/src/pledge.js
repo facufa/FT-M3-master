@@ -8,7 +8,8 @@ Promises Workshop: construye la libreria de ES6 promises, pledge.js
 function $Promise(executor) {
     if(typeof executor !== 'function') throw new TypeError('executor function');
 
-    this._state = 'pending';
+    this._state = 'pending';    
+    this._handlerGroups = []; 
     executor(this._internalResolve.bind(this), this._internalReject.bind(this));
     //executor( () => _internalResolve, () => _internalReject)
 
@@ -27,6 +28,13 @@ $Promise.prototype._internalReject = function(value) {
         this._value = value;
     }
 };
+
+$Promise.prototype.then = function(successCb, errorCb) {
+    if(typeof successCb !== 'function') successCb = false;
+    if(typeof errorCb !== 'function') errorCb = false;
+    
+    this._handlerGroups.push({successCb, errorCb});
+}
 
 
 
