@@ -67,9 +67,13 @@ describe("El método .then de una promesa", function(){
 
 });
 
+
+
+
+
 // Ahora viene una de las partes mágicas de las promesas, la
 // forma en que pueden disparar handlers para ambos, cuando se
-// colocan y cuando ya han sido colocados.
+// colocan y cuando ya han sido colocados
 
 describe('Una promise', function(){
 
@@ -104,7 +108,7 @@ describe('Una promise', function(){
 
     // Recomendado: agergá un método `._callHandlers` al prototipo de tu promesa
 
-    xit('llama al success handles agregado por `.then`', function(){
+    it('llama al success handles agregado por `.then`', function(){
       promiseForNum.then( setFoo10 );
       expect( setFoo10 ).toHaveBeenCalled();
     });
@@ -114,7 +118,7 @@ describe('Una promise', function(){
       expect( addToFoo ).toHaveBeenCalledWith( 25 );
     });
 
-    xit('llama a cada success handler, una vez por cada adhesión', function(){
+    it('llama a cada success handler, una vez por cada adhesión', function(){
       promiseForNum.then( setFoo10 );
       promiseForNum.then( addToFoo );
       promiseForNum.then( addToFoo );
@@ -123,7 +127,7 @@ describe('Una promise', function(){
       expect( addToFoo ).toHaveBeenCalledWith( 25 );
     });
 
-    xit('llama cada success handler cuando es añadido', function(){
+    it('llama cada success handler cuando es añadido', function(){
       promiseForNum.then( setFoo10 );
       expect( foo ).toBe( 10 );
       promiseForNum.then( addToFoo );
@@ -137,13 +141,13 @@ describe('Una promise', function(){
 
   describe('que ya tiene un success handler', function(){
 
-    xit('llama ese handler cuando es completado', function(){
+    it('llama ese handler cuando es completado', function(){
       promiseForNum.then( setFoo10 );
       promiseForNum._internalResolve();
       expect( setFoo10 ).toHaveBeenCalled();
     });
 
-    xit('llama todos los success handlers en orden una vez cuando son completados', function(){
+    it('llama todos los success handlers en orden una vez cuando son completados', function(){
       promiseForNum.then( setFoo10 );
       promiseForNum.then( addToFoo );
       promiseForNum._internalResolve( 25 );
